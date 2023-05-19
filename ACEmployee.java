@@ -12,6 +12,18 @@ public class ACEmployee extends Employee{
         typeOfSW=sc.nextLine();
     }
 
+    public void calcSalary(){
+        hourlySal=200;
+        salary=hourlySal*workingHours;
+    }
+
+    public void calcMonthlyBonus(){
+        if(workingHours>100){
+            salary+=(workingHours-100)*50;
+        }
+    }
+
+
     public String toString(){
         return "\nAC Employee: "
                 +super.toString()

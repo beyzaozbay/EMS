@@ -17,6 +17,17 @@ public class ITEmployee extends Employee{
         comp.getInput();
 
     }
+    public void calcSalary(){
+        hourlySal=300;
+        salary=hourlySal*workingHours;
+    }
+
+    public void calcMonthlyBonus(){
+        if(workingHours>100){
+            salary+=(workingHours-100)*50;
+        }
+    }
+
 
     public String toString(){
 

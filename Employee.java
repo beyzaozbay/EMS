@@ -92,8 +92,6 @@ public abstract class Employee {
         educationLevel=sc.next();
         System.out.print("\nEnter employee phoneNumber: ");
         phoneNumber=sc.nextInt();
-        System.out.print("\nEnter employee hourly salary: ");
-        hourlySal=sc.nextDouble();
         System.out.print("\nEnter employee working hours: ");
         workingHour=sc.next();
     }

@@ -6,7 +6,23 @@ public CellPhone(){
 
 }
 
-public void getInput(){
+    public String getPhoneBrand() {
+        return phoneBrand;
+    }
+
+    public void setPhoneBrand(String phoneBrand) {
+        this.phoneBrand = phoneBrand;
+    }
+
+    public int getMemory() {
+        return memory;
+    }
+
+    public void setMemory(int memory) {
+        this.memory = memory;
+    }
+
+    public void getInput(){
     Scanner sc=new Scanner(System.in);
     System.out.print("\nEnter the cell phone brand that is used by the HR Employee: ");
     phoneBrand=sc.next();
