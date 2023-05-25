@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        HREmployee hrEmployee = new HREmployee();
+        hrEmployee.getInput();
+        hrEmployee.calcSalary();
+        hrEmployee.calcMonthlyBonus();
+        
+        System.out.println(hrEmployee.toString());
+    }
+}
