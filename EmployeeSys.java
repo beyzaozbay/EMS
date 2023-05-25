@@ -2,21 +2,80 @@ import java.util.ArrayList;
 
 public class EmployeeSys {
 
-    ArrayList<Employee> emp = new ArrayList<>();
+    private static ArrayList<Employee> arr = new ArrayList<Employee>();
+	
+	
+	
+	public static void addEmployee() {
+		ITEmployee ite;
+		HREmployee hre;
+		ACEmployee ace;
+		
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter how many employee do you want to add : ");
+        int number = sc.nextInt();
+        
+        for (int i = 1; i <= number; i++) {
+            System.out.print("\nEnter type name of department: ");
+            String type = sc.next();
+            
+            if(type.equalsIgnoreCase("IT")) {
+                ite = new ITEmployee();
+                ite.getInput();
+                ite.calcMonthlyBonus();
+                arr.add(ite);
+            }
+            if(type.equalsIgnoreCase("AC")) {
+                ace = new ACEmployee();
+                ace.getInput();
+                ace.calcMonthlyBonus();
+                arr.add(ace);
+            }
+            else {
+                hre = new HREmployee();
+                hre.getInput();
+                hre.calcMonthlyBonus();
+                arr.add(hre);
+            }
+        }   
+    }
+	 public static boolean removeEmployee(String name) {
+	    	boolean removed = false;
+	        for (int i = 0; i < arr.size(); i++) {
+	            if (arr.get(i).findEmployee().equalsIgnoreCase(name)) {
+	                arr.remove(i);
+	                removed = true;
+	                break;
+	            }
+	        }
+	        return removed;
+	    }
+	
+	
+	}
+public static Employee searchEmployee(String name) {
+	Employee employee = null;
+	for (Employee l : arr) {
+		if (l.findEmployee(name)) {
+			employee = l;
+			break;
+		}
+	}
+	return employee;
+}
 
-    public void addEmployee(){}
-
-    public boolean removeEmployee(){
-        return false;
+public static String display() {
+    Employee temp;
+    String out = "";
+    
+   
+    for (Employee l : arr) {
+        out += l.toString() + "\n\n";
     }
 
-    public ArrayList<Employee> searchEmployee(){
-        return emp;
-    }
+    return out;
+}
 
-    public String display(){
-        return " ";
-    }
 
     public void calculateEmployeeHolidays(){
         int legallyRequiredHolidays = 30; //base holiday days for everyone
