@@ -107,7 +107,7 @@ public static String display() {
                 phdAvg++;
             }
         }
-        System.out.println("\nEducation Level Avg: \nHigh School: " +hsAvg +"\nBachelor: " +bAvg +"\nMaster: " +mAvg +"\nPhD: " +phdAvg);
+        System.out.println("\nEducation Level Avg: \nHigh School: " +hsAvg +"/" +all +"\nBachelor: " +bAvg +"/" +all +"\nMaster: " +mAvg +"/" +all +"\nPhD: " +phdAvg +"/" +all);
     }
 
     public void calculateEmployeeGenderAverage(){
@@ -120,7 +120,7 @@ public static String display() {
                 mascAvg++;
             }
         }
-        System.out.println("\nGender Avg: \nFemale Avg: " +femAvg +"\nMale Avg: " +mascAvg);
+        System.out.println("\nGender Avg: \nFemale Avg: " +femAvg +"/" +all +"\nMale Avg: " +mascAvg +"/" +all);
     }
 
     public void addManagerSalary(){
