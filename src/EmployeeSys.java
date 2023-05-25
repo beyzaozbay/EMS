@@ -35,7 +35,7 @@ public class EmployeeSys {
     }
 
     public void calculateEmployeeEducationAverage(){
-        double hsAvg = 0, bAvg = 0, mAvg = 0, phdAvg = 0;
+        double hsAvg = 0, bAvg = 0, mAvg = 0, phdAvg = 0, all = 0;
 
         for(int i = 0; i < emp.size(); i++){
             if(emp.get(i).getEducationLevel() == "HS"){
@@ -48,20 +48,24 @@ public class EmployeeSys {
                 phdAvg++;
             }
         }
-        System.out.println("\nEducation Level Avg: \nHigh School: " +hsAvg +"\nBachelor: " +bAvg +"\nMaster: " +mAvg +"\nPhD: " +phdAvg);
+        all = hsAvg + bAvg + mAvg + phdAvg;
+        System.out.println("\nEducation Level Avg: \nHigh School: " +hsAvg +"/" +all +"\nBachelor: " +bAvg +"/" +all +"\nMaster: " +mAvg +"/" +all +"\nPhD: " +phdAvg +"/" +all);
     }
 
     public void calculateEmployeeGenderAverage(){
         double femAvg = 0, mascAvg = 0;
+        double all = 0;
 
         for (int i = 0; i < emp.size(); i++){
             if(emp.get(i).getGender().equalsIgnoreCase("F")){
                 femAvg++;
+
             } else if (emp.get(i).getGender().equalsIgnoreCase("M")) {
                 mascAvg++;
             }
         }
-        System.out.println("\nGender Avg: \nFemale Avg: " +femAvg +"\nMale Avg: " +mascAvg);
+        all = femAvg + mascAvg;
+        System.out.println("\nGender Avg: \nFemale Avg: " +femAvg +"/" +all +"\nMale Avg: " +mascAvg +"/" +all);
     }
 
     public void addManagerSalary(){
