@@ -1,132 +1,136 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class EmployeeSys {
 
-    private static ArrayList<Employee> arr = new ArrayList<Employee>();
-	
-	
-	
-	public static void addEmployee() {
-		ITEmployee ite;
-		HREmployee hre;
-		ACEmployee ace;
-		
+  public static  ArrayList<Employee> empList = new ArrayList<>();
+
+    public static void addEmployee() {
+        ITEmployee ite;
+        HREmployee hre;
+        ACEmployee ace;
+        Employee emp;
+
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter how many employee do you want to add : ");
         int number = sc.nextInt();
-        
-        for (int i = 1; i <= number; i++) {
-            System.out.print("\nEnter type name of department: ");
+
+        for (int i = 0; i < number; i++) {
+            System.out.print("\nEnter type of the department (IT/AC/HR):  ");
             String type = sc.next();
-            
+
             if(type.equalsIgnoreCase("IT")) {
-                ite = new ITEmployee();
+                 ite= new ITEmployee();
                 ite.getInput();
                 ite.calcMonthlyBonus();
-                arr.add(ite);
+                empList.add(ite);
             }
-            if(type.equalsIgnoreCase("AC")) {
+            else  if(type.equalsIgnoreCase("AC")) {
                 ace = new ACEmployee();
                 ace.getInput();
                 ace.calcMonthlyBonus();
-                arr.add(ace);
+                empList.add(ace);
             }
             else {
                 hre = new HREmployee();
                 hre.getInput();
                 hre.calcMonthlyBonus();
-                arr.add(hre);
+                empList.add(hre);
             }
-        }   
+        }
     }
-	 public static boolean removeEmployee(String name) {
-	    	boolean removed = false;
-	        for (int i = 0; i < arr.size(); i++) {
-	            if (arr.get(i).findEmployee().equalsIgnoreCase(name)) {
-	                arr.remove(i);
-	                removed = true;
-	                break;
-	            }
-	        }
-	        return removed;
-	    }
-	
-	
-	}
-public static Employee searchEmployee(String name) {
-	Employee employee = null;
-	for (Employee l : arr) {
-		if (l.findEmployee(name)) {
-			employee = l;
-			break;
-		}
-	}
-	return employee;
-}
-
-public static String display() {
-    Employee temp;
-    String out = "";
-    
-   
-    for (Employee l : arr) {
-        out += l.toString() + "\n\n";
+    public static boolean removeEmployee(int id) {
+        boolean removed = false;
+        for (int i = 0; i < empList.size(); i++) {
+            if (empList.get(i).findEmployee(id)) {
+                empList.remove(i);
+                removed = true;
+                break;
+            }
+        }
+        return removed;
     }
 
-    return out;
-}
 
 
-    public void calculateEmployeeHolidays(){
+    public static Employee searchEmployee(int id) {
+        Employee employee = null;
+        for (Employee l : empList) {
+            if (l.findEmployee(id)) {
+                employee = l;
+                break;
+            }
+        }
+        return employee;
+    }
+
+    public static String display() {
+        Employee temp;
+        String out = "";
+
+
+        for (Employee l : empList) {
+            out += l.toString() + "\n\n";
+        }
+
+        return out;
+    }
+
+
+    public static void calculateEmployeeHolidays(){
         int legallyRequiredHolidays = 30; //base holiday days for everyone
-        int earnedHolidays = 0;//employees have to work for 11(months)*22(days)*9(hours) hours a year if the employee does not fill the working hour quota they will get holidays removed as penalty
+        //employees have to work for 11(months)*22(days)*9(hours) hours a year if the employee does not fill the working hour quota they will get holidays removed as penalty
         //I probably would not be a great boss
-        for (int i = 0; i < emp.size(); i++){
-            if(emp.get(i).getWorkingHour()<2178){
-                earnedHolidays = legallyRequiredHolidays - 5;
-            } else if (emp.get(i).getWorkingHour()>2178) {
-                earnedHolidays = legallyRequiredHolidays + 5; //over workers shall be rewarded with extra holidays therefore I am a great boss
+        for (int i = 0; i < empList.size(); i++){
+            if(empList.get(i).getWorkingHour()<2178){
+                empList.get(i).setHolidays(legallyRequiredHolidays - 5);
+            } else if (empList.get(i).getWorkingHour()>2178) {
+                empList.get(i).setHolidays(legallyRequiredHolidays + 5);//over workers shall be rewarded with extra holidays therefore I am a great boss
             }
             else
-                earnedHolidays = 30;
+                empList.get(i).setHolidays(30);
         }
 
     }
 
-    public void calculateEmployeeEducationAverage(){
-        double hsAvg = 0, bAvg = 0, mAvg = 0, phdAvg = 0;
+    public static void calculateEmployeeEducationRatio(){
+        double hs = 0, b = 0, m = 0, phd = 0, all = 0;
 
-        for(int i = 0; i < emp.size(); i++){
-            if(emp.get(i).getEducationLevel() == "HS"){
-                hsAvg++;
-            } else if (emp.get(i).getEducationLevel() == "Bachelor") {
-                bAvg++;
-            } else if (emp.get(i).getEducationLevel() == "Master") {
-                mAvg++;
-            } else if (emp.get(i).getEducationLevel() == "PhD") {
-                phdAvg++;
+        for(int i = 0; i < empList.size(); i++){
+            if(empList.get(i).getEducationLevel().equalsIgnoreCase("hs")){
+                hs++;
+            } else if (empList.get(i).getEducationLevel().equalsIgnoreCase("bachelor")) {
+                b++;
+            } else if (empList.get(i).getEducationLevel() .equalsIgnoreCase("master")) {
+                m++;
+            } else if (empList.get(i).getEducationLevel().equalsIgnoreCase("phd")) {
+                phd++;
             }
         }
-        System.out.println("\nEducation Level Avg: \nHigh School: " +hsAvg +"/" +all +"\nBachelor: " +bAvg +"/" +all +"\nMaster: " +mAvg +"/" +all +"\nPhD: " +phdAvg +"/" +all);
+        all = hs + b + m + phd;
+        System.out.println("\nEducation Level Ratio: \nHigh School: " +hs +"/" +all +"\nBachelor: " +b +"/" +all +"\nMaster: " +m +"/" +all +"\nPhD: " +phd +"/" +all);
     }
 
-    public void calculateEmployeeGenderAverage(){
-        double femAvg = 0, mascAvg = 0;
+    public static void calculateEmployeeGenderRatio(){
+        double fem = 0, masc = 0;
+        double all = 0;
 
-        for (int i = 0; i < emp.size(); i++){
-            if(emp.get(i).getGender().equalsIgnoreCase("F")){
-                femAvg++;
-            } else if (emp.get(i).getGender().equalsIgnoreCase("M")) {
-                mascAvg++;
+        for (int i = 0; i < empList.size(); i++){
+            if(empList.get(i).getGender().equalsIgnoreCase("F")){
+                fem++;
+
+            } else if (empList.get(i).getGender().equalsIgnoreCase("M")) {
+                masc++;
             }
         }
-        System.out.println("\nGender Avg: \nFemale Avg: " +femAvg +"/" +all +"\nMale Avg: " +mascAvg +"/" +all);
+        all = fem + masc;
+        System.out.println("\nGender Avg: \nFemale Avg: " +fem +"/" +all +"\nMale Avg: " +masc +"/" +all);
     }
 
-    public void addManagerSalary(){
-        for (int i = 0; i < emp.size(); i++){
-            if (emp.get(i).getIsManager()==true){
-                emp.get(i).setSalary( emp.get(i).getSalary()+1500);
+    public static void addManagerSalary(){
+        for (int i = 0; i < empList.size(); i++){
+            if (empList.get(i).getIsManager()==true){
+                empList.get(i).setSalary( empList.get(i).getSalary()+1500);
             }
         }
     }

@@ -1,5 +1,9 @@
-public abstract class Employee {
-    protected static int id=100;
+import java.util.Scanner;
+
+public abstract class Employee implements  EmployeeInterface{
+
+
+	protected int id;
     protected String nameSurname;
     protected String gender;
     protected String educationLevel;
@@ -7,13 +11,35 @@ public abstract class Employee {
     protected double hourlySal;
     protected int workingHour;
     protected double salary;
+    protected boolean isManager;
+    protected int holidays;
+    protected static int prevId=100;
 
 
 
     public Employee(){
-        id++;
+    
+       this. id=prevId++;
     }
+    
+    
+    public int getHolidays() {
+		return holidays;
+	}
 
+
+	public void setHolidays(int holidays) {
+		this.holidays = holidays;
+	}
+
+
+	public boolean getIsManager() {
+		return isManager;
+	}
+
+	public void setisManager(boolean isManager) {
+		this.isManager = isManager;
+	}
     public int getId() {
         return id;
     }
@@ -83,18 +109,27 @@ public abstract class Employee {
     }
 
     public void getInput(){
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("\nEnter employee name surname: ");
-        nameSurname=sc.nextLine();
+        this.nameSurname = sc.nextLine();
         System.out.print("\nEnter employee gender (M/F): ");
-        gender=sc.next();
+        this.gender = sc.next();
         System.out.print("\nEnter employee education level (HS/Bachelor/Master/PhD): ");
-        educationLevel=sc.next();
+        this.educationLevel = sc.next();
         System.out.print("\nEnter employee phoneNumber: ");
-        phoneNumber=sc.nextInt();
+        this.phoneNumber = sc.nextInt();
         System.out.print("\nEnter employee working hours: ");
-        workingHour=sc.next();
+        this.workingHour = sc.nextInt();
+        sc.skip("\\R");
+        System.out.println("\nIs the employee a manager?(yes/no): ");
+        String answer = sc.nextLine();
+        if (answer.equalsIgnoreCase("yes")){
+            this.isManager = true;
+        }else if (answer.equalsIgnoreCase("no")){
+            this.isManager = false;
+        }
     }
+
 
     public String toString(){
         return "\nEmployee id: "+id
@@ -103,11 +138,11 @@ public abstract class Employee {
                 +"\nEmployee education level: "+educationLevel
                 +"\nEmployee phone number: "+phoneNumber
                 +"\nEmployee hourly salary: "+hourlySal
-                +"\nEmployee working hours: "+workingHours
+                +"\nEmployee working hours: "+workingHour
                 +"\nEmployee total salary: "+salary;
     }
 
-    public abstract void calculateSalary();
+    public abstract void calcSalary();
 
-    }
+    
 }

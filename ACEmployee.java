@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ACEmployee extends Employee{
     private String typeOfSW;
 
@@ -14,12 +16,12 @@ public class ACEmployee extends Employee{
 
     public void calcSalary(){
         hourlySal=200;
-        salary=hourlySal*workingHours;
+        salary=hourlySal*workingHour;
     }
 
     public void calcMonthlyBonus(){
-        if(workingHours>100){
-            salary+=(workingHours-100)*50;
+        if(workingHour>100){
+            salary+=(workingHour-100)*50;
         }
     }
 

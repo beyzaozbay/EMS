@@ -1,6 +1,9 @@
+import java.util.Scanner;
+
 public class ITEmployee extends Employee{
     private String typeOfSW;
     private String typeOfProgrammingLanguage;
+    Computer comp= new Computer();
 
     public ITEmployee(){
         super();
@@ -12,24 +15,26 @@ public class ITEmployee extends Employee{
         System.out.print("\nEnter the type of software that is used by the IT employee: ");
         typeOfSW=sc.nextLine();
         System.out.print("\nEnter the type of programming language that is used by IT employee: ");
-        typrOfProgrammingLanguage=sc.nextLine();
-        Computer comp= new Computer();
+        typeOfProgrammingLanguage=sc.nextLine();
+      
         comp.getInput();
 
     }
     public void calcSalary(){
         hourlySal=300;
-        salary=hourlySal*workingHours;
+        salary=hourlySal*workingHour;
     }
 
     public void calcMonthlyBonus(){
-        if(workingHours>100){
-            salary+=(workingHours-100)*50;
+        if(workingHour>100){
+            salary+=(workingHour-100)*50;
         }
     }
 
 
     public String toString(){
+    	
+    	
 
         return "\nIT Employee: "
                 +super.toString()

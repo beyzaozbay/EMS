@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Computer {
     private String compBrand;
     private String CPUModel;
@@ -35,6 +37,7 @@ public class Computer {
         Scanner sc=new Scanner(System.in);
         System.out.print("\nEnter computer brand: ");
         compBrand=sc.next();
+        sc.skip("\\R");
         System.out.print("\nEnter CPU model of computer: ");
         CPUModel=sc.nextLine();
         System.out.print("\nEnter SSD Capacity: ");

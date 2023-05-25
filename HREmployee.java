@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
 public class HREmployee extends Employee{
     public HashSet<CellPhone> cellPhoneHashSet= new HashSet();
 
@@ -21,22 +24,24 @@ public class HREmployee extends Employee{
 
     public String toString(){
         String cpStr="";
-        for(CellPhone cp: CellPhoneHashSet){
+        for(CellPhone cp: cellPhoneHashSet){
             cpStr+= "\n\tCellPhones: "
                     +cp.toString()+"\n";
         }
         return "\nHR Employee"
-                +super.toString+
+                +super.toString()+
                 cpStr;
     }
 
     public void calcSalary(){
         hourlySal=100;
-        salary=hourlySal*workingHours;
+        salary=hourlySal*workingHour;
     }
 
     public void calcMonthlyBonus(){
-        if(workingHours>100){
-            salary+=(workingHours-100)*50;
+        if(workingHour>100){
+            salary+=(workingHour-100)*50;
 
         }
+    }
+}
