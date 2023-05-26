@@ -58,6 +58,7 @@ public class EmployeeSys {
         for (Employee l : empList) {
             if (l.findEmployee(id)) {
                 employee = l;
+                employee.toString();
                 break;
             }
         }
@@ -68,9 +69,8 @@ public class EmployeeSys {
         Employee temp;
         String out = "";
 
-
-        for (Employee l : empList) {
-            out += l.toString() + "\n\n";
+        for (int i = 0; i < empList.size(); i++) {
+            out += empList.get(i).toString() + "\n\n";
         }
 
         return out;
@@ -94,7 +94,7 @@ public class EmployeeSys {
     }
 
     public static void calculateEmployeeEducationRatio(){
-        double hs = 0, b = 0, m = 0, phd = 0, all = 0;
+        int hs = 0, b = 0, m = 0, phd = 0, all = 0;
 
         for(int i = 0; i < empList.size(); i++){
             if(empList.get(i).getEducationLevel().equalsIgnoreCase("hs")){
@@ -112,8 +112,7 @@ public class EmployeeSys {
     }
 
     public static void calculateEmployeeGenderRatio(){
-        double fem = 0, masc = 0;
-        double all = 0;
+        int fem = 0, masc = 0,  all = 0;
 
         for (int i = 0; i < empList.size(); i++){
             if(empList.get(i).getGender().equalsIgnoreCase("F")){

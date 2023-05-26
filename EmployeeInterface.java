@@ -1,3 +1,4 @@
+
 public interface EmployeeInterface {
-    public abstract void calcMonthlyBonus();
+	public abstract void calcMonthlyBonus();
 }

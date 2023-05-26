@@ -116,7 +116,7 @@ public abstract class Employee implements  EmployeeInterface{
         this.gender = sc.next();
         System.out.print("\nEnter employee education level (HS/Bachelor/Master/PhD): ");
         this.educationLevel = sc.next();
-        System.out.print("\nEnter employee phoneNumber: ");
+        System.out.print("\nEnter employee phone number: ");
         this.phoneNumber = sc.nextInt();
         System.out.print("\nEnter employee working hours: ");
         this.workingHour = sc.nextInt();

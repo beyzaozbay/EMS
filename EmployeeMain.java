@@ -19,19 +19,22 @@ public class EmployeeMain {
         System.out.println("Employee you search has not found.");
         }
          boolean isRemoved;
-        System.out.print("\nEnter festival id to delete: ");
-        id=sc.nextInt();
-        isRemoved=EmployeeSys.removeEmployee(id);
-        if(isRemoved){
-        System.out.println("Employee is deleted.");
+        System.out.print("\nWould you like to delete an employee? ");
+        String answer = sc.next();
+        if (answer.equalsIgnoreCase("yes")) {
+        	id=sc.nextInt();
+            isRemoved=EmployeeSys.removeEmployee(id);
+            if(isRemoved){
+            System.out.println("Employee is deleted.");
+            }
+            else{
+            System.out.println("Employee is not deleted");
+            }
         }
-
-        else{
-        System.out.println("Employee is not deleted");
-        }
+        
 
         String out=null;
-        System.out.println("Content of the array list");
+        System.out.println("\nThe Final List of Employees:");
         out=EmployeeSys.display();
         System.out.println(out);
 
