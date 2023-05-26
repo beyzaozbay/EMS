@@ -15,7 +15,7 @@ public class ACEmployee extends Employee{
     }
 
     public void calcSalary(){
-        hourlySal=200;
+    	hourlySal=200;
         salary=hourlySal*workingHour;
     }
 

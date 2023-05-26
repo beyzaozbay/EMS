@@ -22,18 +22,21 @@ public class EmployeeSys {
             if(type.equalsIgnoreCase("IT")) {
                  ite= new ITEmployee();
                 ite.getInput();
+                ite.calcSalary();
                 ite.calcMonthlyBonus();
                 empList.add(ite);
             }
             else  if(type.equalsIgnoreCase("AC")) {
                 ace = new ACEmployee();
                 ace.getInput();
+                ace.calcSalary();
                 ace.calcMonthlyBonus();
                 empList.add(ace);
             }
             else {
                 hre = new HREmployee();
                 hre.getInput();
+                hre.calcSalary();
                 hre.calcMonthlyBonus();
                 empList.add(hre);
             }
@@ -58,7 +61,6 @@ public class EmployeeSys {
         for (Employee l : empList) {
             if (l.findEmployee(id)) {
                 employee = l;
-                employee.toString();
                 break;
             }
         }
@@ -98,13 +100,13 @@ public class EmployeeSys {
 
         for(int i = 0; i < empList.size(); i++){
             if(empList.get(i).getEducationLevel().equalsIgnoreCase("hs")){
-                hs++;
+                hs+=1;
             } else if (empList.get(i).getEducationLevel().equalsIgnoreCase("bachelor")) {
-                b++;
+                b+=1;
             } else if (empList.get(i).getEducationLevel() .equalsIgnoreCase("master")) {
-                m++;
+                m+=1;
             } else if (empList.get(i).getEducationLevel().equalsIgnoreCase("phd")) {
-                phd++;
+                phd+=1;
             }
         }
         all = hs + b + m + phd;
@@ -116,14 +118,15 @@ public class EmployeeSys {
 
         for (int i = 0; i < empList.size(); i++){
             if(empList.get(i).getGender().equalsIgnoreCase("F")){
-                fem++;
+                fem+=1;
 
             } else if (empList.get(i).getGender().equalsIgnoreCase("M")) {
-                masc++;
-            }
+                masc+=1;
+           
         }
         all = fem + masc;
         System.out.println("\nGender Avg: \nFemale Avg: " +fem +"/" +all +"\nMale Avg: " +masc +"/" +all);
+    }
     }
 
     public static void addManagerSalary(){

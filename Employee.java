@@ -18,8 +18,7 @@ public abstract class Employee implements  EmployeeInterface{
 
 
     public Employee(){
-    
-       this. id=prevId++;
+    this.id=prevId++;
     }
     
     
@@ -111,22 +110,22 @@ public abstract class Employee implements  EmployeeInterface{
     public void getInput(){
         Scanner sc = new Scanner(System.in);
         System.out.print("\nEnter employee name surname: ");
-        this.nameSurname = sc.nextLine();
+        nameSurname = sc.nextLine();
         System.out.print("\nEnter employee gender (M/F): ");
-        this.gender = sc.next();
+        gender = sc.next();
         System.out.print("\nEnter employee education level (HS/Bachelor/Master/PhD): ");
-        this.educationLevel = sc.next();
+        educationLevel = sc.next();
         System.out.print("\nEnter employee phone number: ");
-        this.phoneNumber = sc.nextInt();
+        phoneNumber = sc.nextInt();
         System.out.print("\nEnter employee working hours: ");
-        this.workingHour = sc.nextInt();
+        workingHour = sc.nextInt();
         sc.skip("\\R");
         System.out.println("\nIs the employee a manager?(yes/no): ");
         String answer = sc.nextLine();
         if (answer.equalsIgnoreCase("yes")){
-            this.isManager = true;
+            isManager = true;
         }else if (answer.equalsIgnoreCase("no")){
-            this.isManager = false;
+            isManager = false;
         }
     }
 
@@ -139,7 +138,8 @@ public abstract class Employee implements  EmployeeInterface{
                 +"\nEmployee phone number: "+phoneNumber
                 +"\nEmployee hourly salary: "+hourlySal
                 +"\nEmployee working hours: "+workingHour
-                +"\nEmployee total salary: "+salary;
+                +"\nEmployee total salary: "+salary
+                +"\nEmployee manager status: "+isManager;
     }
 
     public abstract void calcSalary();

@@ -23,10 +23,9 @@ public class HREmployee extends Employee{
     }
 
     public String toString(){
-        String cpStr="";
+        String cpStr="\n\tCellPhones: ";
         for(CellPhone cp: cellPhoneHashSet){
-            cpStr+= "\n\tCellPhones: "
-                    +cp.toString()+"\n";
+            cpStr+= cp.toString()+"\n";
         }
         return "\nHR Employee"
                 +super.toString()+
@@ -34,7 +33,8 @@ public class HREmployee extends Employee{
     }
 
     public void calcSalary(){
-        hourlySal=100;
+    	hourlySal=100;
+     
         salary=hourlySal*workingHour;
     }
 
